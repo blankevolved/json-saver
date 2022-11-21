@@ -2,7 +2,7 @@ import json
 import os
 
 
-def save_to_file(filepath, key, val):
+def save_to_file(filepath, key, val, nested=None):
     ## check if save.json dosent exist, if it dosent create it.
     if os.path.exists(filepath) == False:
         with open(filepath, 'w+') as json_file:
@@ -16,7 +16,10 @@ def save_to_file(filepath, key, val):
     
     ## write to the save file
     with open(filepath, 'w+') as json_file:
-        loaded_json[key] = val
+        if nested != None:
+            loaded_json[key][nested] = val
+        else:
+            loaded_json[key] = val
 
         json_file.seek(0)
         json.dump(loaded_json, json_file, indent=4)
