@@ -27,6 +27,20 @@ Save.json:
     "var": 1
 }
 ```
+We can also save to a nested value
+```py
+name = "HELLO"
+save_to_file('save.json', 'dict', var, 'name')
+```
+
+Save.json:
+```json
+{
+    "dict": {
+        "name": "HELLO"
+    }
+}
+```
 ## Loading
 We have a json file we want to load in
 
